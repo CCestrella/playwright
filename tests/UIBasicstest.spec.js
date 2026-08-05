@@ -12,6 +12,8 @@ test('Browser Context Playwright test', async ({browser}) =>
     
     const userName = page.locator('#username'); //"Remember where the Username box is."
     const signInButton = page.locator('#signInBtn'); //"Remember where the Sign In button is."
+
+    const cardTitles = page.locator('.card-body a'); //Remember where the card titles are.
     
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/'); //Loads the URL.
     //await page.pause();
@@ -30,6 +32,9 @@ test('Browser Context Playwright test', async ({browser}) =>
  await signInButton.click();
  console.log(await page.locator(".card-body a").nth(0).textContent());
  console.log(await page.locator(".card-body a").nth(1).textContent());
+ const allTitles = await cardTitles.allTextContents(); //Returns an array of all the card titles.
+ console.log(allTitles);
+ await cardTitles.allTextContents().then(function(value){ //Returns an array of all the card titles.
 
 });
 
@@ -39,4 +44,4 @@ test('Browser Context Playwright test', async ({browser}) =>
 //     console.log(await page.title());
 //       await expect(page).toHaveTitle("Google");
 // });
-  
+});
